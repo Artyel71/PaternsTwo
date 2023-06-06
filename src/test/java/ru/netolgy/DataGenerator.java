@@ -72,15 +72,19 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-            var user = new RegistrationDto("vasya", "password", "active");
+            var user = new RegistrationDto("vasya", "password", status);
             return user;
         }
+
+
+
 
         public static RegistrationDto getRegisteredUser(String status) {
             var registeredUser = getUser(status);
             sendRequest(registeredUser);
             return registeredUser;
         }
+
     }
 
     @Value

@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.restassured.RestAssured.given;
-import static ru.netolgy.DataGenerator.Registration.getRegisteredUser;
-import static ru.netolgy.DataGenerator.Registration.getUser;
+import static ru.netolgy.DataGenerator.Registration.*;
 import static ru.netolgy.DataGenerator.getRandomLogin;
 import static ru.netolgy.DataGenerator.getRandomPassword;
 
@@ -44,6 +43,7 @@ class AuthorisationTest {
                 .shouldHave(Condition.text("Ошибка! Пользователь заблокирован"))
                 .shouldBe(Condition.visible);
     }
+
     @Test
     @DisplayName("Should get error message if login with unregistered user")
     void shouldGetErrorIfUnRegisteredUser() {
