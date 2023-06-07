@@ -47,10 +47,9 @@ class AuthorisationTest {
     @Test
     @DisplayName("Should get error message if login with unregistered user")
     void shouldGetErrorIfUnRegisteredUser() {
-        var wrongLogin = getRandomLogin();
-        var wrongPassword = getRandomPassword();
-        $("[data-test-id='login'] input").setValue(wrongLogin);
-        $("[data-test-id='password'] input").setValue(wrongPassword);
+        var unRegisteredUser = getUser("active");
+        $("[data-test-id='login'] input").setValue(unRegisteredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(unRegisteredUser.getLogin());
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content").shouldHave(Condition.text("Ошибка! Неверно указан логин или пароль"))
                 .shouldBe(Condition.visible);
